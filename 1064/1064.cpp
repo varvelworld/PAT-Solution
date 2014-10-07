@@ -13,7 +13,7 @@ int main()
     int full_num;           //满二叉树元素数
     int insert_empty_num;   //转成完全树需要插入的空元素数
     vector<int> a;
-    vector<int> t;        //临时列表
+    vector<int> t;          //临时列表
 
     cin >> k;
     for(int i = 0; i < k; ++i)
