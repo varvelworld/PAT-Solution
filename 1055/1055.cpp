@@ -52,7 +52,7 @@ int richer[MAX_PEOPEL_NUM];
 
 int main()
 {
-    Richer* people = new Richer[MAX_PEOPEL_NUM * 1000];
+    Richer* people = new Richer[MAX_PEOPEL_NUM];
     int n, k;
     cin >> n >> k;
     for(int i = 0; i < n; ++i)
