@@ -13,7 +13,7 @@ struct Node
 int main()
 {
     int k;
-    Node* head = new Node();
+    Node* head = new Node(); // 表头
     int size = 0;
     head->e = numeric_limits<double>::max();
     head->next = head;
@@ -82,6 +82,6 @@ int main()
         printf(" %d %.1lf", p->e, p->c);
         p = p->next;
     }
-    cout << '\n';
+    cout << endl;
     return 0;
 }

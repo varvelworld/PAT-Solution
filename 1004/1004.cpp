@@ -55,5 +55,6 @@ int main()
     {
         cout << (i > 0 ? " " : "") << leafCountByLevel[i];
     }
+    cout << endl;
     return 0;
 }

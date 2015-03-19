@@ -41,6 +41,7 @@ int main()
             }
         }
     }
+    // 清除系数为0的项
     for(auto iter_result = result.begin(); iter_result != result.end(); ++iter_result) 
     {
         if((int)(iter_result->second * 10) == 0) 

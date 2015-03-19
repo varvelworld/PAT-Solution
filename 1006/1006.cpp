@@ -26,5 +26,6 @@ int main()
         }
     }
     cout << first_student_id << ' ' << last_student_id << endl;
+    cout << endl;
     return 0;
 }

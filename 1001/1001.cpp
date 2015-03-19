@@ -32,5 +32,6 @@ int main()
         cout << ',' << setfill('0') << setw(3) << stk.top();
         stk.pop();
     }
+    cout << endl;
     return 0;
 }

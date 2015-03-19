@@ -35,5 +35,6 @@ int main()
         cout << " " << spell.top();
         spell.pop();
     }
+    cout << endl;
     return 0;
 }

@@ -11,14 +11,13 @@ struct Vertex
 {
     int key;        //城市编号
     int value;      //城市救援队数量
-    Edge* edges;    //出边带表头的单链表
+    Edge* edges;    //出边单链表
     bool s;         //集合S，已知最短路径结点集合
     int num;        //最短路径个数
     int d;          //最短路径长度
     int v;          //最短路径救援队数量
-    Vertex():key(0), value(0), edges(nullptr), s(false), num(0), d(numeric_limits<int>::max()), v(v){}
+    Vertex() {}
     Vertex(int key, int value):key(key), value(value), edges(nullptr), s(false), num(0), d(numeric_limits<int>::max()), v(0){}
-    Vertex(int key, int value, int d, int v):key(key), value(value), edges(nullptr), s(false), num(0), d(d), v(v){}
 };
 
 struct VertexQueueNode
@@ -50,17 +49,18 @@ int main(){
     int n, m, c1, c2;
     cin >> n >> m >> c1 >> c2;
     Vertex* graph = new Vertex[n];
-    priority_queue<VertexQueueNode, vector<VertexQueueNode>, VertexQueueNodeCmp> queue 
-        = priority_queue<VertexQueueNode, vector<VertexQueueNode>, VertexQueueNodeCmp>();//最小优先队列Q
+    priority_queue<VertexQueueNode, vector<VertexQueueNode>, VertexQueueNodeCmp> queue;//最小优先队列Q
 
     //初始化图
     for(int i = 0; i < n; ++i) 
     {
         int value;
         cin >> value;
-        graph[i] = i != c1 ? Vertex(i, value) : Vertex(i, value, 0, value);
+        graph[i] = Vertex(i, value);
     }
     graph[c1].num = 1;
+    graph[c1].d = 0;
+    graph[c1].v = graph[c1].value;
     for(int i = 0; i < m; ++i)
     {
         int a, b, w;

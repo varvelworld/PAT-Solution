@@ -14,7 +14,7 @@ int main()
     vector<pair<string, float>> english;
     vector<pair<string, float>> average;
     vector<pair<string, float>>* score[4];
-    map<string, pair<int, int>> bestRank;
+    map<string, pair<int, int>> bestRank; // value中的pair first为rank,second为科目
 
     char word[4] = {'A', 'C', 'M', 'E'};
     score[0] = &average;
@@ -35,7 +35,7 @@ int main()
         english.push_back(make_pair(s, e));
         average.push_back(make_pair(s, a));
     }
-    auto cmp = [](const pair<string, float> &a,const pair<string, float> b){ return a.second > b.second;};
+    auto cmp = [](const pair<string, float> &a,const pair<string, float> &b){ return a.second > b.second;};
     for(int i = 0; i < 4; ++i)
     {
         sort(score[i]->begin(), score[i]->end(), cmp);
