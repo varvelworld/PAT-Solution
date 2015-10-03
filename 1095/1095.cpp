@@ -30,7 +30,8 @@ int time_to_seconds(string time) {
 	return seconds;
 }
 
-void seconds_to_time(int seconds, string& time) {
+string seconds_to_time(int seconds) {
+	string time;
 	int hour = seconds / (60 * 60);
 	int minute = seconds % (60 * 60) / 60;
 	int second = seconds % 60;
@@ -39,20 +40,21 @@ void seconds_to_time(int seconds, string& time) {
 		<< setw(2) << setfill('0') << minute << ":"
 		<< setw(2) << setfill('0') << second;
 	ss >> time;
+	return time;
 }
 
-void diff_time(string a, string b, string& result) {
+string diff_time(string a, string b) {
 	int seconds_a = time_to_seconds(a);
 	int seconds_b = time_to_seconds(b);
 	int seconds_diff = seconds_a - seconds_b;
-	seconds_to_time(seconds_diff, result);
+	return seconds_to_time(seconds_diff);
 }
 
-void add_time(string a, string b, string& result) {
+string add_time(string a, string b) {
 	int seconds_a = time_to_seconds(a);
 	int seconds_b = time_to_seconds(b);
 	int seconds_diff = seconds_a + seconds_b;
-	seconds_to_time(seconds_diff, result);
+	return seconds_to_time(seconds_diff);
 }
 
 int main() {
@@ -111,12 +113,11 @@ int main() {
 			}
 			else if ("out" == status) {
 				auto cars_to_time_iter = cars_to_in_time.find(plate_number);
-				string diff;
-				diff_time(time, cars_to_time_iter->second, diff);
+				string diff = diff_time(time, cars_to_time_iter->second);
 				auto cars_to_parked_time_iter = cars_to_parked_time.find(plate_number);
 				string parked_time;
 				if (cars_to_parked_time_iter != cars_to_parked_time.end()) {
-					add_time(diff, cars_to_parked_time_iter->second, parked_time);
+					parked_time = add_time(diff, cars_to_parked_time_iter->second);
 				}
 				else {
 					parked_time = diff;
@@ -146,12 +147,11 @@ int main() {
 		}
 		else if ("out" == status) {
 			auto cars_to_time_iter = cars_to_in_time.find(plate_number);
-			string diff;
-			diff_time(time, cars_to_time_iter->second, diff);
+			string diff = diff_time(time, cars_to_time_iter->second);
 			auto cars_to_parked_time_iter = cars_to_parked_time.find(plate_number);
 			string parked_time;
 			if (cars_to_parked_time_iter != cars_to_parked_time.end()) {
-				add_time(diff, cars_to_parked_time_iter->second, parked_time);
+				parked_time = add_time(diff, cars_to_parked_time_iter->second);
 			}
 			else {
 				parked_time = diff;
